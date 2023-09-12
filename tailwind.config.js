@@ -11,7 +11,9 @@ export default {
       },
       colors: {
         white: 'hsl(0, 0%, 100%)',
-        rose700: 'hsl(353, 85%, 38%)'
+        rose700: 'hsl(353, 85%, 38%)',
+        gray400: 'hsl(220.43, 13.91%, 64.31%)',
+        gray900: 'hsl(217, 29.4%, 10.8%)'
       },
     },
     screens: {

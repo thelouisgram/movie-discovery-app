@@ -1,9 +1,25 @@
 import Hero from "../pages/HomePage/HeroSection/Hero"
+import TopMovies from "../pages/HomePage/TopMovies/TopMovies"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { showTopMovies } from "../store/stateAction"
+import Footer from "../pages/HomePage/Footer/Footer"
 
 const Home = () => {
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(showTopMovies())
+  },[dispatch])
+
   return (
     <div>
+      {/* Hero section */}
       <Hero />
+      {/* Top Movies */}
+      <TopMovies />
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }
