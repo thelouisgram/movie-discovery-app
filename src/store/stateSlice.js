@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {showTopMovies, showSearchedMovies, showMovieDetails} from './stateAction'
+import {showTopMovies, showSearchedMovies, showMovieDetails, showTrendingMovies} from './stateAction'
 
 const stateSlice = createSlice({
     name: "app",
@@ -12,6 +12,7 @@ const stateSlice = createSlice({
         topMovies: [],
         searchedMovies: [],
         movieDetails: [],
+        trendingMovies: [],
     },
     reducers: {
         reset: (state) => {
@@ -65,7 +66,21 @@ const stateSlice = createSlice({
             state.loading = false;
             state.error = true;
             state.message = action.payload;
-            state.movieDetails = [];
+            state.trendingMovies = [];
+        })
+        .addCase(showTrendingMovies.pending, (state) => {
+            state.loading = true;
+        })
+        .addCase(showTrendingMovies.fulfilled, (state, action) => {
+            state.loading = false;
+            state.trendingMovies = action.payload;
+            state.success = true;
+        })
+        .addCase(showTrendingMovies.rejected, (state, action) => {
+            state.loading = false;
+            state.error = true;
+            state.message = action.payload;
+            state.trendingMovies = [];
         })
     },
 })

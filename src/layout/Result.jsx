@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar/Navbar";
 import MovieCard from "../components/Shared/MovieCard";
 
 const Result = () => {
-  const { success, loading, error, searchedMovies, searchedMovie } =
+  const { success, loading, error, searchedMovies, searchedMovie} =
     useSelector((state) => state.app);
   const dispatch = useDispatch();
 
@@ -16,6 +16,7 @@ const Result = () => {
       dispatch(showSearchedMovies(searchedMovie));
     }
   }, [dispatch, searchedMovie]);
+
 
   return (
     <div>
