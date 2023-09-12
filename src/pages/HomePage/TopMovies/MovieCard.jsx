@@ -11,7 +11,7 @@ const MovieCard = ({ movie }) => {
     <Link to={`/movie/${movie.id}`}>
       <div
         data-testid="movie-card"
-        className="text-gray900 flex flex-col gap-[12px] cursor-pointer"
+        className="text-gray900 flex flex-col gap-[12px] cursor-pointer hover:shadow-xl transform hover:scale-110 transition-all"
       >
         {/* Movie Poster */}
         <div className="img-placeholder bg-gray400">
