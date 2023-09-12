@@ -17,6 +17,7 @@ const stateSlice = createSlice({
         reset: (state) => {
             state.searchedMovie = '';
             state.searchedMovies = [];
+            state.movieDetails = [];
         },
         setSearchedMovie: (state, action) => {
             state.searchedMovie = action.payload
