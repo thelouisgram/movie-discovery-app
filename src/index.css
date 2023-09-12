@@ -56,3 +56,13 @@
   aspect-ratio: 834/469.12;
    width:full;
 }
+
+
+.fadeIn {
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.fadeIn.visible {
+  opacity: 1;
+}

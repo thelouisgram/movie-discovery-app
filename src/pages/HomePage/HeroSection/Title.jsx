@@ -2,7 +2,7 @@
 const Title = ({poster}) => {
   return (
     <>
-      <h1 className="text-[40px] md:text-[48px] font-[700] leading-[48px] md:leading-[56px] ">
+      <h1 className="text-[40px] md:text-[48px] font-[700] leading-[48px] md:leading-[56px] shadow-sm flex-wrap flex">
         {poster.title}
       </h1>
     </>

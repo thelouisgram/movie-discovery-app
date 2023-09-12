@@ -15,7 +15,7 @@ const Rating = ({ poster }) => {
               alt="imdb logo"
             />
           </div>
-          <p className="text-[12px] leading-[12px] font-[400]">{(poster.vote_average * 10).toLocaleString()} / 100</p>
+          <p className="text-[12px] leading-[12px] font-[400] shadow-sm">{(poster.vote_average * 10).toLocaleString()} / 100</p>
         </div>
         {/* Rotten Tomatoes Rating */}
         <div className="flex gap-[10px] items-center">
@@ -28,7 +28,7 @@ const Rating = ({ poster }) => {
               alt="Rotten Tomatoes logo"
             />
           </div>
-          <p className="text-[12px] leading-[12px] font-[400]">97%</p>
+          <p className="text-[12px] leading-[12px] font-[400] shadow-sm">97%</p>
         </div>
       </div>
     </>

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Details from "../pages/MovieDetails/Details";
 import Sidebar from "../pages/MovieDetails/Sidebar/Sidebar";
 import Loader from "../components/Shared/Loader";
-import DetailsNav from './../components/Navbar/DetailsNav'
+import DetailsNav from "./../components/Navbar/DetailsNav";
 
 const MovieDetails = () => {
   // Retrieve data from Redux store using useSelector
@@ -40,7 +40,9 @@ const MovieDetails = () => {
       {/* Sidebar Component */}
       <div>
         <Sidebar radius={radius} />
-        <div className="bg-rose700"><DetailsNav /></div>
+        <div className="bg-rose-200">
+          <DetailsNav />
+        </div>
       </div>
 
       {/* Conditional rendering based on loading, error, or success */}
