@@ -10,8 +10,8 @@ const Home = () => {
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    dispatch(showTopMovies())
     dispatch(showTrendingMovies())
+    dispatch(showTopMovies())
     dispatch(reset())
   })
 

@@ -7,17 +7,17 @@ const TopMovies = () => {
     useSelector((state) => state.app);
 
   return (
-    <section className="md:w-[1100px] mx-auto py-16">
+    <section className="md:w-[1100px] mx-auto py-16 px-3 xs:px-5 md:px-0">
       <div className="flex w-full justify-between items-center mb-8">
-        <h2 className="font-[700] text-[36px]">Top Rated Movie</h2>
-        <div className="flex items-center gap-2 hover:cursor-pointer">
-          <p className="text-rose700 text-[18px] font-[400] leading-[24px]">
+        <h2 className="font-[700] text-16px] xs:text-[24px] md:text-[36px]">Top Rated Movie</h2>
+        <div className="flex items-center gap-0 xs:gap-1 md:gap-2 hover:cursor-pointer">
+          <p className="text-rose700 text-[12px] xs:text-[16px] font-[400] leading-normal xs:leading-[24px]">
             See more
           </p>
-          <img src="/images/right.svg" alt="See more" />
+          <img src="/images/right.svg" alt="See more" className="w-[14px] xs:w-[16px] md:-[w-auto]"/>
         </div>
       </div>
-      <div className="grid grid-cols-4 gap-[80px]">
+      <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-[12px] xs:gap-[18px] md:gap-[80px]">
         {loading ? (
           <Loader />
         ) : error ? (

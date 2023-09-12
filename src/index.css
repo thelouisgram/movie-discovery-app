@@ -6,7 +6,6 @@
 @tailwind utilities;
 
 .hero{
-    background-image: url('/public/images/Poster.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

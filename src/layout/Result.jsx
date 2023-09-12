@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar/Navbar";
 import MovieCard from "../components/Shared/MovieCard";
 
 const Result = () => {
-  const { success, loading, error, searchedMovies, searchedMovie} =
+  const { success, loading, error, searchedMovies, searchedMovie } =
     useSelector((state) => state.app);
   const dispatch = useDispatch();
 
@@ -19,21 +19,21 @@ const Result = () => {
 
 
   return (
-    <div>
-      <div className="md:w-full xl:w-[1440px] mx-auto bg-rose700">
+    <div className="w-full h-[100dvh]">
+      <div className="md:w-full w-full xl:w-[1440px] mx-auto bg-rose700">
         {/* Navbar */}
         <Navbar />
       </div>
       {/* Results Section */}
-      <div className="md:w-[1100px] mx-auto py-16">
-        {!loading && <div className="flex w-full justify-start center mb-8">
-          <h2 className="font-[700] text-[36px]">Search result for <span className="italic">'{searchedMovie}'</span> ({searchedMovies.length})</h2>
-      </div>}
-        <div className="grid grid-cols-4 gap-[80px]">
+      <div className="md:w-[1100px] mx-auto py-8 xs:py-12 md:py-16 px-3 xs:px-5 md:px-0">
+        {!loading && <div className="flex w-full justify-start center mb-4 xs:mb-8">
+          <h2 className="font-[700] text-[18px] md:text-[36px]">Search result for <span className="italic">'{searchedMovie}'</span> ({searchedMovies.length})</h2>
+        </div>}
+        <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-[12px] xs:gap-[18px] md:gap-[80px] flex-wrap">
           {loading ? (
             <Loader />
           ) : error ? (
-            <p>Error occurred: {error.message}</p>
+            <p>Error occurred: {error.status.message}</p>
           ) : success ? (
             searchedMovies.map((movie, index) => (
               <MovieCard key={index} movie={movie} />

@@ -1,18 +1,19 @@
+/* eslint-disable react/prop-types */
 import MovieDescription from "./MovieDescription";
 import Rating from "./Rating";
 import Title from "./Title";
 import WatchTrailer from "./WatchTrailer";
 
-const DescriptionBox = () => {
+const DescriptionBox = ({poster}) => {
   return (
-    <div className="w-[404px] h-auto flex flex-col gap-[16px] text-white">
+    <div className="md:w-[404px] h-auto flex flex-col gap-[16px] text-white items-center md:items-start">
       {/* Title */}
-      <Title />
+      <Title poster={poster}/>
       {/* Rating */}
-      <Rating />
+      <Rating poster={poster} />
       {/* Description */}
-      <MovieDescription />
-      {/* Watch Trailer Button */}
+      <MovieDescription poster={poster} />
+      { }
       <WatchTrailer />
     </div>
   );
