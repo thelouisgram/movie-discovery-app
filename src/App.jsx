@@ -12,8 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />
-            <Route path="/result" element={<Result />} />
-            <Route path="/:id" element={<MovieDetails />} />
+            <Route path="/search/:searchedMovie" element={<Result />} />
+            <Route path="/movies/:id" element={<MovieDetails />} />
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
