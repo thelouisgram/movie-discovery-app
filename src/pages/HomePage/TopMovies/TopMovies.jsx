@@ -9,7 +9,7 @@ const TopMovies = () => {
   return (
     <section className="md:w-[1100px] mx-auto py-16">
       <div className="flex w-full justify-between items-center mb-8">
-        <h2 className="font-[700] text-[36px]">Featured Movie</h2>
+        <h2 className="font-[700] text-[36px]">Top Rated Movie</h2>
         <div className="flex items-center gap-2 hover:cursor-pointer">
           <p className="text-rose700 text-[18px] font-[400] leading-[24px]">
             See more
