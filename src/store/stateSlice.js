@@ -14,7 +14,8 @@ const stateSlice = createSlice({
     },
     reducers: {
         reset: (state) => {
-            state.searchedMovie = ''
+            state.searchedMovie = '';
+            state.searchedMovies = [];
         },
         setSearchedMovie: (state, action) => {
             state.searchedMovie = action.payload

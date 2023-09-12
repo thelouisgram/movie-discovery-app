@@ -1,14 +1,10 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
 import Loader from "./../../../components/Shared/Loader";
-import { showSearchedMovies } from "../../../store/stateAction";
-import { useEffect } from "react";
 
 const TopMovies = () => {
-  const { success, loading, error, topMovies, searchedMovies, searchedMovie } =
+  const { success, loading, error, topMovies } =
     useSelector((state) => state.app);
-  const dispatch = useDispatch();
-
 
   return (
     <section className="md:w-[1100px] mx-auto py-16">

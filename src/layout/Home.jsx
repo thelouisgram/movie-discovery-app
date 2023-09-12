@@ -4,13 +4,15 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { showTopMovies } from "../store/stateAction"
 import Footer from "../pages/HomePage/Footer/Footer"
+import { reset } from "../store/stateSlice"
 
 const Home = () => {
   const dispatch = useDispatch()
 
   useEffect(()=>{
     dispatch(showTopMovies())
-  },[dispatch])
+    dispatch(reset())
+  })
 
   return (
     <div>
