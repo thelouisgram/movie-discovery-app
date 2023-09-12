@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../components/Shared/Loader";
 import { showSearchedMovies } from "../store/stateAction";
 import { useEffect } from "react";
 import Navbar from "../components/Navbar/Navbar";
-import MovieCard from "../pages/HomePage/TopMovies/MovieCard";
+import MovieCard from "../components/Shared/MovieCard";
 
 const Result = () => {
   const { success, loading, error, searchedMovies, searchedMovie } =
@@ -25,7 +26,7 @@ const Result = () => {
       {/* Results Section */}
       <div className="md:w-[1100px] mx-auto py-16">
         {!loading && <div className="flex w-full justify-start center mb-8">
-          <h2 className="font-[700] text-[36px]">Search result for {searchedMovie}({searchedMovies.length})</h2>
+          <h2 className="font-[700] text-[36px]">Search result for <span className="italic">'{searchedMovie}'</span> ({searchedMovies.length})</h2>
       </div>}
         <div className="grid grid-cols-4 gap-[80px]">
           {loading ? (

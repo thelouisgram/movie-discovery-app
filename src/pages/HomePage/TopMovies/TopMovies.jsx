@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import MovieCard from "./MovieCard";
 import Loader from "./../../../components/Shared/Loader";
+import MovieCard from "../../../components/Shared/MovieCard";
 
 const TopMovies = () => {
   const { success, loading, error, topMovies } =

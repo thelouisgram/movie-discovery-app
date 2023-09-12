@@ -23,10 +23,10 @@ export const showSearchedMovies = createAsyncThunk('searchedMovies', async (sear
 	}
 });
 
-export const showMovieDetails = createAsyncThunk('searchedMovies', async (id, thunkAPI) => {
+export const showMovieDetails = createAsyncThunk('movieDetails', async (id, thunkAPI) => {
 	try {
-		const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key${apiKey}`);
-		return response.data.results;
+		const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`);
+		return response.data;
 	} catch (err) {
 		const message = (err.response && err.response.data) || err.message;
 		return thunkAPI.rejectWithValue(message);

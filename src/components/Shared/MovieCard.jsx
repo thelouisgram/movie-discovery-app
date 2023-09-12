@@ -8,7 +8,7 @@ const MovieCard = ({ movie }) => {
   const fullPosterUrl = `${baseImageUrl}${posterSize}${posterPath}`;
 
   return (
-    <Link to={`/movie/${movie.id}`}>
+    <Link to={`/movies/${movie.id}`}>
       <div
         data-testid="movie-card"
         className="text-gray900 flex flex-col gap-[12px] cursor-pointer hover:shadow-xl transform hover:scale-110 transition-all"

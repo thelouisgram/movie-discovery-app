@@ -1,16 +1,11 @@
+import Logo from "../Shared/Logo";
 import SearchBar from "./SearchBar";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="flex justify-between h-[80px] items-center md:w-[1100px] mx-auto">
-      <Link
-        to='/'
-        className="flex gap-[24px] items-center cursor-pointer">
-        <img src="/images/logo.svg" alt="Logo" />
-        <h3 className="font-[700] text-[24px] leading-[24px]">MovieBox</h3>
-      </Link>
-      <div className='w-auto h-auto'>
+      <Logo />
+      <div className="w-auto h-auto">
         <SearchBar />
       </div>
       <div className="flex gap-[27px] items-center">
