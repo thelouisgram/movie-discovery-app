@@ -7,10 +7,16 @@ const Details = ({ movie }) => {
     <div className="flex flex-col items-start gap-6 w-full">
       {/* Image backdrop */}
       {movie.backdrop_path && (
-        <div className="backdrop w-full h-full bg-gray-300 overflow-hidden rounded-[20px]">
+        <div className="backdrop w-full h-full bg-gray-300 overflow-hidden  rounded-[20px] relative flex justify-center items-center">
+          <img
+            src="/images/playBtn.svg"
+            alt="Play button"
+            className="absolute"
+          />
+          <div className="absolute w-[110px] h-[110px]  bg-gray-100 opacity-30 rounded-full cursor-pointer" />
           <img
             src={`${tmdbImageUrl}${movie.backdrop_path}`}
-            alt="Movie Backdrop"
+            alt={`${movie.title}`}
             className="w-full h-full object-cover"
           />
         </div>
@@ -23,7 +29,7 @@ const Details = ({ movie }) => {
         {movie.title}
       </h1>
       {/* Specifics */}
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center flex-wrap">
         {/* Release Dates */}
         <p data-testid="movie-release-date">{releaseDateInUTC}</p>
         <span>•</span>
