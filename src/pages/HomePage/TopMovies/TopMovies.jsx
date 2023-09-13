@@ -12,7 +12,7 @@ const TopMovies = () => {
   return (
     <section className="md:w-[1100px] mx-auto py-16 px-3 xs:px-5 md:px-0">
       <div className="flex w-full justify-between items-center mb-8">
-        <h2 className="font-[700] text-16px xs:text-[24px] md:text-[36px]">
+        <h2 className="font-[700] text-16px xs:text-[24px] sm:text-[36px]">
           Top Rated Movies
         </h2>
         <div className="flex items-center gap-1 hover:cursor-pointer">

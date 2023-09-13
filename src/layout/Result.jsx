@@ -29,7 +29,7 @@ const Result = () => {
 
   return (
     <div className="w-full h-[100dvh]">
-      <div className="md:w-full w-full xl:w-[1440px] mx-auto border-b-[1px] md:border-none border-gray-400">
+      <div className="md:w-full w-full xl:w-[1440px] mx-auto border-b-[1px] md:border-none border-gray-300">
         {/* Navbar */}
         <Navbar />
       </div>

@@ -1,3 +1,5 @@
+import Buttons from "./Buttons";
+
 /* eslint-disable react/prop-types */
 const Details = ({ movie }) => {
   const releaseDateInUTC = new Date(movie.release_date).toUTCString();
@@ -55,6 +57,7 @@ const Details = ({ movie }) => {
       <p data-testid="movie-overview className='text-[20px]">
         {movie.overview}
       </p>
+      <Buttons />
     </div>
   );
 };

@@ -42,11 +42,11 @@ const MovieDetails = () => {
   });
 
   return (
-    <div className="h-dvh md:w-[1100px] mx-auto font-Poppins md:flex gap-[40px] md:items-center">
+    <div className="h-dvh md:w-[1100px] mx-auto font-Poppins md:flex gap-[40px] pb-12 md:pb-0 md:items-center">
       {/* Sidebar Component */}
       <div>
         <Sidebar radius={radius} />
-        <div className="border-b-[1px] md:border-none border-gray-400">
+        <div className="border-b-[1px] md:border-none border-gray-300">
           <Navbar display="flex md:hidden" />
         </div>
       </div>
