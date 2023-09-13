@@ -5,6 +5,8 @@ import { showSearchedMovies } from "../store/stateAction";
 import { useEffect } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import MovieCard from "../components/Shared/MovieCard";
+import { setNav } from "../store/stateSlice";
+
 
 const Result = () => {
   const { success, loading, error, searchedMovies, searchedMovie } =
@@ -16,6 +18,10 @@ const Result = () => {
       dispatch(showSearchedMovies(searchedMovie));
     }
   }, [dispatch, searchedMovie]);
+
+  useEffect(() => {
+    dispatch(setNav(false))
+  })   
 
 
   return (

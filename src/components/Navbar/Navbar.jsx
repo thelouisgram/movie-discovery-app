@@ -8,7 +8,7 @@ const Navbar = ({ display }) => {
   const dispatch = useDispatch();
   return (
     <div
-      className={`${display} justify-between h-[80px] items-center md:w-[1100px] w-full px-3 xs:px-5 md:px-0 mx-auto `}
+      className={`${display} ${!display && 'flex'} justify-between h-[80px] items-center md:w-[1100px] w-full px-3 xs:px-5 md:px-0 mx-auto `}
     >
       <Logo />
       <div className="w-auto h-auto hidden ss:flex">

@@ -6,6 +6,7 @@ import Details from "../pages/MovieDetails/Details";
 import Sidebar from "../pages/MovieDetails/Sidebar/Sidebar";
 import Loader from "../components/Shared/Loader";
 import Navbar from "../components/Navbar/Navbar";
+import { setNav } from "../store/stateSlice";
 
 const MovieDetails = () => {
   // Retrieve data from Redux store using useSelector
@@ -26,6 +27,10 @@ const MovieDetails = () => {
   useEffect(() => {
     dispatch(showMovieDetails(id));
   }, [dispatch, id]);
+
+  useEffect(()=>{
+    dispatch(setNav(false))
+  })
 
   // Use useEffect to scroll to the top of the page when the component mounts
   useEffect(() => {
