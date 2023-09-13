@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 /* eslint-disable react/prop-types */
 const MovieCard = ({ movie }) => {
@@ -6,22 +7,31 @@ const MovieCard = ({ movie }) => {
   const posterSize = "w300";
   const posterPath = movie.poster_path;
   const fullPosterUrl = `${baseImageUrl}${posterSize}${posterPath}`;
+  const [fav, setFav] = useState(false);
+
+  const handleFav = () => {
+    setFav((prev) => !prev);
+  };
 
   return (
-    <Link to={`/movies/${movie.id}`}>
-      <div
-        data-testid="movie-card"
-        className="text-gray900 flex flex-col gap-[12px] cursor-pointer hover: transform md:hover:scale-110 transition-all relative"
+    <div
+      data-testid="movie-card"
+      className="text-gray900 flex flex-col gap-[12px] cursor-pointer hover: transform md:hover:scale-110 transition-all relative"
+    >
+      <button
+        onClick={handleFav}
+        className={`absolute z-[8] top-1 right-1 ss:top-2 ss:right-2 ${
+          fav ? "bg-rose700" : "bg-grayBtn"
+        } backdrop-blur-1 h-[24px] w-[24px] ss:w-[30px] 
+        ss:h-[30px] rounded-full flex items-center justify-center`}
       >
-        <div className="absolute z-[8] top-1 right-1 ss:top-2 ss:right-2 bg-grayBtn backdrop-blur-1 h-[24px] w-[24px] ss:w-[30px] 
-        ss:h-[30px] rounded-full flex items-center justify-center">
-          <img
-            src="/images/Heart.svg"
-            alt="Favorite"
-            className="z-[9] w-[16px] h-[16px] ss:w-auto ss:h-auto"
-          />
-        </div>
-
+        <img
+          src="/images/Heart.svg"
+          alt="Favorite"
+          className="z-[9] w-[16px] h-[16px] ss:w-auto ss:h-auto"
+        />
+      </button>
+      <Link to={`/movies/${movie.id}`}>
         {/* Movie Poster */}
         <div className="img-placeholder bg-gray400">
           <img
@@ -52,8 +62,8 @@ const MovieCard = ({ movie }) => {
             {movie.release_date}
           </p>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 
