@@ -17,3 +17,11 @@ export const links = [
     icon: '/images/Calendar.svg',
   },
 ];
+
+export const showMessage = (message) => {
+  if (typeof message === 'object') {
+    return message.status_message;
+  } else {
+    return message;
+  }
+};

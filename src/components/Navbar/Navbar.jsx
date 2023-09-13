@@ -14,7 +14,7 @@ const Navbar = ({ display }) => {
     >
       <Logo />
       <div className="w-auto h-auto hidden ss:flex">
-        <SearchBar />
+        <SearchBar colors={"border-white text-white placeholder:text-white"} />
       </div>
       <div className="flex gap-[18px] md:gap-[27px] items-center">
         <h3 className="font-[700] text-[16px] leading-[24px] hidden md:flex">

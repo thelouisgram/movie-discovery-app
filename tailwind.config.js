@@ -20,6 +20,7 @@ export default {
         gray500: 'hsl(0, 0%, 40%, 1)',
         rose600: 'hsl(345, 83%, 41%, 0.7)',
         pink200: 'hsl(345, 83%, 41%, 0.2)',
+        grayBtn: 'hsl(220, 14%, 96%, 0.5)',
       },
     },
     screens: {

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {showTopMovies, showSearchedMovies, showMovieDetails, showTrendingMovies} from './stateAction'
 
+
 const stateSlice = createSlice({
     name: "app",
     initialState: {
@@ -14,6 +15,7 @@ const stateSlice = createSlice({
         movieDetails: [],
         trendingMovies: [],
         nav: false,
+
     },
     reducers: {
         reset: (state) => {

@@ -6,7 +6,7 @@ import Details from "../pages/MovieDetails/Details";
 import Sidebar from "../pages/MovieDetails/Sidebar/Sidebar";
 import Loader from "../components/Shared/Loader";
 import Navbar from "../components/Navbar/Navbar";
-import { setNav } from "../store/stateSlice";
+import Error from "./Error";
 
 const MovieDetails = () => {
   // Retrieve data from Redux store using useSelector
@@ -28,10 +28,6 @@ const MovieDetails = () => {
     dispatch(showMovieDetails(id));
   }, [dispatch, id]);
 
-  useEffect(()=>{
-    dispatch(setNav(false))
-  })
-
   // Use useEffect to scroll to the top of the page when the component mounts
   useEffect(() => {
     window.scrollTo({
@@ -45,7 +41,7 @@ const MovieDetails = () => {
       {/* Sidebar Component */}
       <div>
         <Sidebar radius={radius} />
-        <div className="bg-rose-200">
+        <div className="border-b-[1px] ss:border-none border-rose-400">
           <Navbar display="flex md:hidden" />
         </div>
       </div>
@@ -56,7 +52,7 @@ const MovieDetails = () => {
         <Loader />
       ) : error ? (
         // Display an error message if an error occurred
-        <p>Error occurred: {error.status_message}</p>
+        <Error />
       ) : success ? (
         // Display movie details using the Details component when data is successfully fetched
         <div className="h-full px-3 xs:px-5 md:px-0">

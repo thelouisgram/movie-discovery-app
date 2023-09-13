@@ -13,7 +13,7 @@ export const showTopMovies = createAsyncThunk('topMovies', async (_, thunkAPI) =
 	}
 });
 
-export const showTrendingMovies = createAsyncThunk('trebdingMovies', async (_, thunkAPI) => {
+export const showTrendingMovies = createAsyncThunk('trendingMovies', async (_, thunkAPI) => {
 	try {
 		const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`);
 		return response.data.results.slice(0, 5);

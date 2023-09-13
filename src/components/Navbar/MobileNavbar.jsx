@@ -7,18 +7,20 @@ import { useDispatch } from "react-redux";
 const MobileNavbar = () => {
   const dispatch = useDispatch();
   return (
-    <div className="h-[100dvh] w-full bg-white fixed ss:hidden py-6 z-[100] flex flex-col items-center gap-[24px]">
-      <div className="w-full px-5">
-        <button
-          onClick={() => dispatch(setNav(false))}
-          className="w-full flex justify-end"
-        >
-          <img src="/images/X.svg" alt="Cancel Navbar" />
-        </button>
+    <div className="h-[100dvh] w-full bg-white fixed md:w-[575px] ss:right-0 py-6 z-[100] flex flex-col items-center gap-[24px]">
+      <div className="flex justify-between items-center w-full px-3 xs:px-5 pb-6">
+        <Logo />
+        <div className="w-full">
+          <button
+            onClick={() => dispatch(setNav(false))}
+            className="w-full flex justify-end"
+          >
+            <img src="/images/X.svg" alt="Cancel Navbar" />
+          </button>
+        </div>
       </div>
-      <Logo />
       <div className="px-3 xs:px-5 w-full">
-        <SearchBar colors="text-gray-500 border-gray-500 placeholder-gray-500 text-[13px] w-full" />
+        <SearchBar colors="text-[14px] w-full text-gray-400 placeholder:text-400 border-gray-400"/>
       </div>
       <Links />
     </div>

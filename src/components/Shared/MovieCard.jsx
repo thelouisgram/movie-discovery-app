@@ -11,8 +11,17 @@ const MovieCard = ({ movie }) => {
     <Link to={`/movies/${movie.id}`}>
       <div
         data-testid="movie-card"
-        className="text-gray900 flex flex-col gap-[12px] cursor-pointer hover:shadow-xl transform md:hover:scale-110 transition-all"
+        className="text-gray900 flex flex-col gap-[12px] cursor-pointer hover: transform md:hover:scale-110 transition-all relative"
       >
+        <div className="absolute z-[8] top-1 right-1 ss:top-2 ss:right-2 bg-grayBtn backdrop-blur-1 h-[24px] w-[24px] ss:w-[30px] 
+        ss:h-[30px] rounded-full flex items-center justify-center">
+          <img
+            src="/images/Heart.svg"
+            alt="Favorite"
+            className="z-[9] w-[16px] h-[16px] ss:w-auto ss:h-auto"
+          />
+        </div>
+
         {/* Movie Poster */}
         <div className="img-placeholder bg-gray400">
           <img
