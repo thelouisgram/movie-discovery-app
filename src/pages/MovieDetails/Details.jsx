@@ -13,7 +13,7 @@ const Details = ({ movie }) => {
             alt="Play button"
             className="absolute w-[30px] ss:w-auto"
           />
-          <div className="absolute w-[60px] h-[60px] ss:w-[110px] ss:h-[110px]  bg-gray-100 opacity-30 rounded-full cursor-pointer" />
+          <div className="absolute w-[60px] h-[60px] ss:w-[110px] ss:h-[110px]  bg-gray-100 opacity-40 rounded-full cursor-pointer" />
           <img
             src={`${tmdbImageUrl}${movie.backdrop_path}`}
             alt={`${movie.title}`}

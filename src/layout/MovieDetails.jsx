@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Details from "../pages/MovieDetails/Details";
 import Sidebar from "../pages/MovieDetails/Sidebar/Sidebar";
 import Loader from "../components/Shared/Loader";
-import DetailsNav from "./../components/Navbar/DetailsNav";
+import Navbar from "../components/Navbar/Navbar";
 
 const MovieDetails = () => {
   // Retrieve data from Redux store using useSelector
@@ -41,7 +41,7 @@ const MovieDetails = () => {
       <div>
         <Sidebar radius={radius} />
         <div className="bg-rose-200">
-          <DetailsNav />
+          <Navbar display="flex md:hidden" />
         </div>
       </div>
 

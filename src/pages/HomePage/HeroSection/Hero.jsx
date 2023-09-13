@@ -11,13 +11,12 @@ const Hero = () => {
   );
   const dispatch = useDispatch();
 
-  // Define a CSS class to control the fading animation
-  const backgroundImageClass = success ? "fadeInOut" : "";
-
   useEffect(() => {
     // Function to increment selectedMovieIndex
     const incrementIndex = () => {
-      setSelectedMovieIndex((prevIndex) => (prevIndex === 4 ? 0 : prevIndex + 1));
+      setSelectedMovieIndex((prevIndex) =>
+        prevIndex === 4 ? 0 : prevIndex + 1
+      );
     };
 
     // Set an interval to call incrementIndex every 0.5 minute
@@ -39,13 +38,13 @@ const Hero = () => {
     if (error) {
       fetchTrendingMovies();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
   return (
     <div className="lg:w-full h-[100vh] md:h-[600px] bg-center  text-white xl:w-[1440px] xl:mx-auto relative">
       {loading ? (
-        <div className="w-full h-full bg-rose-100 z-[-10]" />
+        <div className="w-full h-full bg-rose-400 z-[-10]" />
       ) : error ? (
         // Display an error message and retry button
         <>
@@ -57,11 +56,11 @@ const Hero = () => {
           <img
             src={`https://image.tmdb.org/t/p/original/${trendingMovies[selectedMovieIndex].backdrop_path}`}
             alt="Backdrop Poster"
-            className={`w-full h-full object-cover absolute z-[-10] ${backgroundImageClass}`}
+            className={`w-full h-full object-cover absolute z-[-10]`}
           />
 
           {/* Navbar */}
-          <Navbar />
+          <Navbar display="flex" />
 
           {/* Description box */}
           <section className="md:w-[1100px] mx-auto h-full md:h-[520px] flex flex-col justify-center items-center md:items-start">
@@ -69,7 +68,6 @@ const Hero = () => {
           </section>
         </>
       ) : null}
-
     </div>
   );
 };

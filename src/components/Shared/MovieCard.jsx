@@ -11,7 +11,7 @@ const MovieCard = ({ movie }) => {
     <Link to={`/movies/${movie.id}`}>
       <div
         data-testid="movie-card"
-        className="text-gray900 flex flex-col gap-[12px] cursor-pointer hover:shadow-xl transform hover:scale-110 transition-all"
+        className="text-gray900 flex flex-col gap-[12px] cursor-pointer hover:shadow-xl transform md:hover:scale-110 transition-all"
       >
         {/* Movie Poster */}
         <div className="img-placeholder bg-gray400">
@@ -24,13 +24,18 @@ const MovieCard = ({ movie }) => {
         </div>
 
         {/* Movie Title */}
-        <h2 data-testid="movie-title" className="text-[14px] md:text-[18px] font-[700]">
+        <h2
+          data-testid="movie-title"
+          className="text-[14px] md:text-[18px] font-[700]"
+        >
           {movie.title}
         </h2>
 
         {/* Movie Release Date */}
         <div className="flex flex-col md:flex-row md:items-center md:gap-1 h-auto">
-          <h2 className="text-[12px] md:text-[14px] font-[700]">Release Date: </h2>
+          <h2 className="text-[12px] md:text-[14px] font-[700]">
+            Release Date:{" "}
+          </h2>
           <p
             data-testid="movie-release-date"
             className="text-gray400 font-[700] text-[12px] md:text-[14px]"

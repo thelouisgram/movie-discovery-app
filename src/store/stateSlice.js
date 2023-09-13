@@ -13,6 +13,7 @@ const stateSlice = createSlice({
         searchedMovies: [],
         movieDetails: [],
         trendingMovies: [],
+        nav: false,
     },
     reducers: {
         reset: (state) => {
@@ -22,6 +23,9 @@ const stateSlice = createSlice({
         },
         setSearchedMovie: (state, action) => {
             state.searchedMovie = action.payload
+        },
+        setNav: (state, action) => {
+            state.nav = action.payload
         }
     },
     extraReducers: (builder) =>{
@@ -86,4 +90,4 @@ const stateSlice = createSlice({
 })
 
 export default stateSlice.reducer
-export const {reset, setSearchedMovie} = stateSlice.actions
+export const {reset, setSearchedMovie, setNav} = stateSlice.actions

@@ -12,7 +12,7 @@ const Sidebar = ({ radius }) => {
       {/* Logo */}
       <Logo />
       {/* Links */}
-      <Links />
+      <Links page = {1}/>
       {/* Start playing */}
       <StartPlaying />
       {/* Logout */}
