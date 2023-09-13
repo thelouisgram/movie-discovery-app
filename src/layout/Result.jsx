@@ -7,24 +7,29 @@ import Navbar from "../components/Navbar/Navbar";
 import MovieCard from "../components/Shared/MovieCard";
 import { setNav } from "../store/stateSlice";
 
+/**
+ * Result component for displaying search results.
+ */
 const Result = () => {
   const { success, loading, error, searchedMovies, searchedMovie } =
     useSelector((state) => state.app);
   const dispatch = useDispatch();
 
+  // Fetch searched movies when the searchedMovie value changes.
   useEffect(() => {
     if (searchedMovie) {
       dispatch(showSearchedMovies(searchedMovie));
     }
   }, [dispatch, searchedMovie]);
 
+  // Disable the navigation bar when the component mounts.
   useEffect(() => {
     dispatch(setNav(false));
-  });
+  }, [dispatch]);
 
   return (
     <div className="w-full h-[100dvh]">
-      <div className="md:w-full w-full xl:w-[1440px] mx-auto border-b-[1px] ss:border-none border-rose-400">
+      <div className="md:w-full w-full xl:w-[1440px] mx-auto border-b-[1px] md:border-none border-gray-400">
         {/* Navbar */}
         <Navbar />
       </div>
@@ -33,7 +38,7 @@ const Result = () => {
         {!loading && (
           <div className="flex w-full justify-start center mb-4 xs:mb-8">
             <h2 className="font-[700] text-[18px] md:text-[36px]">
-              Search result for{" "}
+              Search result for{' '}
               <span className="italic">'{searchedMovie}'</span> (
               {searchedMovies.length})
             </h2>

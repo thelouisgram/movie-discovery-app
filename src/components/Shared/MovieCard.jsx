@@ -1,7 +1,10 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-/* eslint-disable react/prop-types */
+/**
+ * MovieCard component for displaying movie information.
+ */
 const MovieCard = ({ movie }) => {
   const baseImageUrl = "https://image.tmdb.org/t/p/";
   const posterSize = "w300";
@@ -9,6 +12,9 @@ const MovieCard = ({ movie }) => {
   const fullPosterUrl = `${baseImageUrl}${posterSize}${posterPath}`;
   const [fav, setFav] = useState(false);
 
+  /**
+   * Handles the click event for toggling the favorite status of the movie.
+   */
   const handleFav = () => {
     setFav((prev) => !prev);
   };
@@ -20,9 +26,8 @@ const MovieCard = ({ movie }) => {
     >
       <button
         onClick={handleFav}
-        className={`absolute z-[8] top-1 right-1 ss:top-2 ss:right-2 ${
-          fav ? "bg-rose700" : "bg-grayBtn"
-        } backdrop-blur-1 h-[24px] w-[24px] ss:w-[30px] 
+        className={`absolute z-[8] top-1 right-1 ss:top-2 ss:right-2 ${fav ? "bg-rose700" : "bg-grayBtn"
+          } backdrop-blur-1 h-[24px] w-[24px] ss:w-[30px] 
         ss:h-[30px] rounded-full flex items-center justify-center`}
       >
         <img
@@ -33,13 +38,17 @@ const MovieCard = ({ movie }) => {
       </button>
       <Link to={`/movies/${movie.id}`}>
         {/* Movie Poster */}
-        <div className="img-placeholder bg-gray400">
-          <img
-            data-testid="movie-poster"
-            className="w-full h-full object-cover"
-            src={fullPosterUrl}
-            alt={movie.title}
-          />
+        <div className="img-placeholder bg-gray-200">
+          {posterPath ? (
+            <img
+              data-testid="movie-poster"
+              className="w-full h-full object-cover"
+              src={fullPosterUrl}
+              alt={movie.title}
+            />
+          ) : (
+            <h2 className="p-2 h-full flex items-center justify-center">Poster Not Available!</h2>
+          )}
         </div>
 
         {/* Movie Title */}

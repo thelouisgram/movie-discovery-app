@@ -7,12 +7,17 @@ import Sidebar from "../pages/MovieDetails/Sidebar/Sidebar";
 import Loader from "../components/Shared/Loader";
 import Navbar from "../components/Navbar/Navbar";
 import Error from "./Error";
+import { resetError } from "../store/stateSlice";
 
 const MovieDetails = () => {
   // Retrieve data from Redux store using useSelector
   const { success, loading, error, movieDetails } = useSelector(
     (state) => state.app
   );
+
+  useEffect(()=>{
+    dispatch(resetError())
+  })
 
   // Retrieve the "id" parameter from the URL using useParams
   const { id } = useParams();
@@ -41,7 +46,7 @@ const MovieDetails = () => {
       {/* Sidebar Component */}
       <div>
         <Sidebar radius={radius} />
-        <div className="border-b-[1px] ss:border-none border-rose-400">
+        <div className="border-b-[1px] md:border-none border-gray-400">
           <Navbar display="flex md:hidden" />
         </div>
       </div>

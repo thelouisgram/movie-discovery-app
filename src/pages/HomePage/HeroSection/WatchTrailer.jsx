@@ -1,3 +1,7 @@
+/**
+ * WatchTrailer component for displaying a "Watch Trailer" button.
+ * @returns {JSX.Element} The rendered WatchTrailer component.
+ */
 const WatchTrailer = () => {
   return (
     <div>

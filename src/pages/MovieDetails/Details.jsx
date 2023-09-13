@@ -6,7 +6,7 @@ const Details = ({ movie }) => {
   return (
     <div className="flex flex-col items-start gap-6 w-full py-8">
       {/* Image backdrop */}
-      {movie.backdrop_path && (
+      {movie.backdrop_path ? (
         <div className="backdrop w-full h-full bg-gray-300 overflow-hidden  rounded-[20px] relative flex justify-center items-center">
           <img
             src="/images/playBtn.svg"
@@ -20,6 +20,8 @@ const Details = ({ movie }) => {
             className="w-full h-full object-cover"
           />
         </div>
+      ) : (
+          <h2>• Video Not Available!</h2>
       )}
       {/* Movie Title */}
       <h1

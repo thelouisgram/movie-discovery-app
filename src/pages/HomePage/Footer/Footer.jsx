@@ -1,3 +1,6 @@
+/**
+ * Footer component for displaying social media links and site information.
+ */
 const Footer = () => {
   return (
     <div className="md:w-[1100px] mx-auto py-16 flex flex-col items-center gap-[36px]">
