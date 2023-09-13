@@ -35,7 +35,7 @@ const Result = () => {
         {!loading && <div className="flex w-full justify-start center mb-4 xs:mb-8">
           <h2 className="font-[700] text-[18px] md:text-[36px]">Search result for <span className="italic">'{searchedMovie}'</span> ({searchedMovies.length})</h2>
         </div>}
-        <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-[12px] xs:gap-[18px] md:gap-[80px] flex-wrap">
+        <div className="w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-[12px] xs:gap-[18px] md:gap-[80px] flex-wrap">
           {loading ? (
             <Loader />
           ) : error ? (

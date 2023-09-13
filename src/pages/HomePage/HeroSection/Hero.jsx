@@ -3,6 +3,7 @@ import Navbar from "../../../components/Navbar/Navbar";
 import DescriptionBox from "./DescriptionBox";
 import { useSelector, useDispatch } from "react-redux";
 import { showTrendingMovies } from "../../../store/stateAction";
+import Loader from "../../../components/Shared/Loader";
 
 const Hero = () => {
   const [selectedMovieIndex, setSelectedMovieIndex] = useState(0);
@@ -20,7 +21,7 @@ const Hero = () => {
     };
 
     // Set an interval to call incrementIndex every 0.5 minute
-    const intervalId = setInterval(incrementIndex, 30000);
+    const intervalId = setInterval(incrementIndex, 15000);
 
     return () => {
       // Clean up the interval when the component unmounts
@@ -44,7 +45,7 @@ const Hero = () => {
   return (
     <div className="lg:w-full h-[100vh] md:h-[600px] bg-center  text-white xl:w-[1440px] xl:mx-auto relative">
       {loading ? (
-        <div className="w-full h-full bg-rose-400 z-[-10]" />
+        <Loader />
       ) : error ? (
         // Display an error message and retry button
         <>

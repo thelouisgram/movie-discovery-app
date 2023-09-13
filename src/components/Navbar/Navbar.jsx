@@ -8,7 +8,9 @@ const Navbar = ({ display }) => {
   const dispatch = useDispatch();
   return (
     <div
-      className={`${display} ${!display && 'flex'} justify-between h-[80px] items-center md:w-[1100px] w-full px-3 xs:px-5 md:px-0 mx-auto `}
+      className={`${display} ${
+        !display && "flex"
+      } justify-between h-[80px] items-center md:w-[1100px] w-full px-3 xs:px-5 md:px-0 mx-auto `}
     >
       <Logo />
       <div className="w-auto h-auto hidden ss:flex">
@@ -18,12 +20,13 @@ const Navbar = ({ display }) => {
         <h3 className="font-[700] text-[16px] leading-[24px] hidden md:flex">
           Sign In
         </h3>
-        <img
-          onClick={() => dispatch(setNav(true))}
-          src="/images/menu.svg"
-          alt="Menu"
-          className="w-[36px] h-[36px]"
-        />
+        <button onClick={() => dispatch(setNav(true))}>
+          <img
+            src="/images/menu.svg"
+            alt="Menu"
+            className="w-[36px] h-[36px]"
+          />
+        </button>
       </div>
     </div>
   );
