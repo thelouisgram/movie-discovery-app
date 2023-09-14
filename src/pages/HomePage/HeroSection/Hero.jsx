@@ -6,6 +6,7 @@ import Loader from '../../../components/Shared/Loader';
 import Error from '../../../components/Shared/Error';
 import Pagination from '../../../utils/Pagination';
 import Dots from '../../../components/Shared/Dots';
+import { showTrendingMovies } from '../../../store/stateAction';
 
 /**
  * The Hero component displays a hero section with trending movies.
@@ -37,7 +38,7 @@ const Hero = () => {
       {trendLoading ? (
         <Loader />
       ) : trendError ? (
-        <Error />
+        <Error action = {showTrendingMovies}/>
       ) : trendSuccess ? (
         <>
           <img

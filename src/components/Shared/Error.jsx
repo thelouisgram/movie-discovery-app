@@ -17,7 +17,7 @@ const Error = ({ action }) => {
       </p>
       <button
         onClick={() => dispatch(action())}
-        className="rounded-full px-4 py-2 bg-rose-200 text-rose700 font-[600] text-[18px]"
+        className="rounded-full px-4 py-2 bg-rose-200 text-rose700 font-[600] text-[18px] outline-none"
       >
         Retry
       </button>
