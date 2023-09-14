@@ -10,7 +10,7 @@ Introducing the Movie Box Web App: Your ultimate cinematic companion. Discover a
 - **Feature**: The Hero Section showcases the top 5 trending movies.
 - **Function**: Users can instantly see the hottest movies of the moment, making it easy to discover what's popular.
   
-<img src="https://github.com/thelouisgram/movie-discovery-app/blob/main/src/assets/MovieBox%20(4).png" height="500px" />
+<img src="https://github.com/thelouisgram/movie-discovery-app/blob/main/src/assets/MovieBox%20(4).png" />
 
 **Step 2: Utilize the Search Bar**
 - **Feature**: The Search Bar allows users to search for specific movies.
