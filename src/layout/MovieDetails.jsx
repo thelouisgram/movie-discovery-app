@@ -7,17 +7,12 @@ import Sidebar from "../pages/MovieDetails/Sidebar/Sidebar";
 import Loader from "../components/Shared/Loader";
 import Navbar from "../components/Navbar/Navbar";
 import Error from "./Error";
-import { resetError } from "../store/stateSlice";
 
 const MovieDetails = () => {
   // Retrieve data from Redux store using useSelector
   const { success, loading, error, movieDetails } = useSelector(
     (state) => state.app
   );
-
-  useEffect(()=>{
-    dispatch(resetError())
-  })
 
   // Retrieve the "id" parameter from the URL using useParams
   const { id } = useParams();
@@ -39,7 +34,7 @@ const MovieDetails = () => {
       top: 0,
       behavior: "smooth",
     });
-  });
+  }, []);
 
   return (
     <div className="h-dvh md:w-[1100px] mx-auto font-Poppins md:flex gap-[40px] pb-12 md:pb-0 md:items-center">

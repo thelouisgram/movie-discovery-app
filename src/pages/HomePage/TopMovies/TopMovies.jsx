@@ -29,9 +29,9 @@ const TopMovies = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Error action={showTopMovies}/>
+        <Error action={showTopMovies} />
       ) : success ? (
-        <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-[12px] xs:gap-[18px] md:gap-[80px]">
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-[10px] gap-y-[18px] xs:gap-[18px] md:gap-[80px] flex-wrap">
           {topMovies.map((movie, index) => (
             <MovieCard key={index} movie={movie} />
           ))}

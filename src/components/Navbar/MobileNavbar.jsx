@@ -19,7 +19,7 @@ const MobileNavbar = () => {
   };
 
   return (
-    <div className="h-[100dvh] w-full bg-white fixed md:w-[575px] ss:right-0 py-6 z-[100] flex flex-col items-center gap-[24px]">
+    <div className="h-[100vh] w-full bg-white fixed md:w-[575px] ss:right-0 py-6 z-[100] flex flex-col items-center gap-[24px]">
       <div className="flex justify-between items-center w-full px-3 xs:px-5 pb-6">
         <Logo />
         <div className="w-full">

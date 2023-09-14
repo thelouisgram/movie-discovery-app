@@ -31,9 +31,6 @@ const stateSlice = createSlice({
       state.searchedMovies = [];
       state.movieDetails = [];
     },
-    resetError:(state) => {
-      state.error = false;
-    },
     setSearchedMovie: (state, action) => {
       state.searchedMovie = action.payload;
     },
@@ -103,4 +100,4 @@ const stateSlice = createSlice({
 });
 
 export default stateSlice.reducer;
-export const { reset, setSearchedMovie, setNav, resetError } = stateSlice.actions;
+export const { reset, setSearchedMovie, setNav } = stateSlice.actions;

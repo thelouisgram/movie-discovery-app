@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showTopMovies, showTrendingMovies } from '../store/stateAction';
 import { reset } from '../store/stateSlice';
 import { setNav } from '../store/stateSlice';
 import Loader from '../components/Shared/Loader';
@@ -12,8 +11,6 @@ import Footer from '../pages/HomePage/Footer/Footer';
 /**
  * The Home component represents the home page of the application.
  * It displays a hero section, top movies, and a footer.
- *
- * @returns {JSX.Element} - The Home component JSX element.
  */
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,25 +19,12 @@ const Home = () => {
   );
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        // Dispatch the first action asynchronously and wait for it to complete
-        await dispatch(showTrendingMovies());
+    // After both actions are complete, you can dispatch other actions
+    dispatch(reset());
+    dispatch(setNav(false));
+  }, [dispatch])
 
-        // Once the first action is complete, dispatch the second action
-        await dispatch(showTopMovies());
-
-        // After both actions are complete, you can dispatch other actions
-        dispatch(reset());
-        dispatch(setNav(false));
-      } catch (error) {
-        // Handle any errors that might occur during the dispatch
-        console.error('Error:', error);
-      }
-    }
-
-    fetchData(); // Call the async function to start the data fetching process
-  }, [dispatch]);
+ 
 
   return (
     <>
