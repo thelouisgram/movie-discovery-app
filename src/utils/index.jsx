@@ -31,4 +31,23 @@ export const showMessage = (message) => {
 };
 
 
+
+export const handleSwipe = (event, selectedMovieIndex, setSelectedMovieIndex, movies) => {
+  const startX = event.touches[0].clientX;
+  const endX = event.changedTouches[0].clientX;
+  const threshold = 50; // Adjust the threshold as needed
+
+  if (startX - endX > threshold) {
+    // Swipe right (decrease index)
+    if (selectedMovieIndex > 0) {
+      setSelectedMovieIndex(selectedMovieIndex - 1);
+    }
+  } else if (endX - startX > threshold) {
+    // Swipe left (increase index)
+    if (selectedMovieIndex < movies.length - 1) {
+      setSelectedMovieIndex(selectedMovieIndex + 1);
+    }
+  }
+};
+
 // Documented the constants and showMessage function for clarity.
