@@ -25,7 +25,7 @@ Introducing the Movie Box Web App: Your ultimate cinematic companion. Discover a
 - **Function**: Users can explore a curated list of critically acclaimed films, providing them with excellent viewing options beyond the trending movies. This section helps users discover quality cinema based on user ratings and reviews. Each movie card includes a "Favorite" button, allowing users to add movies to their personal favorites list for easy access later.
 
 <p align="center">
-<img src="https://github.com/thelouisgram/movie-discovery-app/blob/main/src/assets/read-me/top-rated.png" height="500px" />
+<img src="https://github.com/thelouisgram/movie-discovery-app/blob/main/src/assets/read-me/top-rated.png" />
 </p>
 
 **Step 4: View Movie Details**
@@ -36,6 +36,8 @@ Introducing the Movie Box Web App: Your ultimate cinematic companion. Discover a
 <img src="https://github.com/thelouisgram/movie-discovery-app/blob/main/src/assets/read-me/details.png" height="500px" />
 </p>
 
+ <p align="center">
 These features work together to offer a well-rounded user experience, allowing users to explore trending, top-rated, and specific movies with ease, and access detailed information to make informed viewing choices.
+</p>
 
 
