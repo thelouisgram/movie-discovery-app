@@ -6,7 +6,6 @@ import Loader from '../../../components/Shared/Loader';
 import Error from '../../../components/Shared/Error';
 import Pagination from '../../../utils/Pagination';
 import Dots from '../../../components/Shared/Dots';
-import { handleSwipe } from '../../../utils';
 
 /**
  * The Hero component displays a hero section with trending movies.
@@ -36,10 +35,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div
-      onTouchStart={(e) => e.preventDefault()} // Prevent default touch events
-      onTouchEnd={handleSwipe}
-      className="lg:w-full h-[100vh] md:h-[600px] bg-center text-white xl:w-[1440px] xl:mx-auto relative">
+    <div className="lg:w-full h-[100vh] md:h-[600px] bg-center text-white xl:w-[1440px] xl:mx-auto relative">
       {trendLoading ? (
         <Loader />
       ) : trendError ? (
@@ -49,7 +45,7 @@ const Hero = () => {
           <img
             src={`https://image.tmdb.org/t/p/original/${trendingMovies[selectedMovieIndex].backdrop_path}`}
             alt="Backdrop Poster"
-            className={`w-full h-full object-cover filter absolute z-[-10]`}
+            className={`w-full h-full object-cover filter brightness-75 absolute z-[-10]`}
           />
 
           {/* Navbar */}
