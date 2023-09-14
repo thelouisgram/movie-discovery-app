@@ -29,9 +29,3 @@ export const showMessage = (message) => {
     return message;
   }
 };
-
-
-
-export 
-
-// Documented the constants and showMessage function for clarity.
