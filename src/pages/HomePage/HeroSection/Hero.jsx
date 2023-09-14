@@ -16,23 +16,21 @@ const Hero = () => {
     (state) => state.app
   );
 
-  const count = 5;
-
-  useEffect(() => {
-    // Function to increment selectedMovieIndex
+  // Function to increment selectedMovieIndex
     const incrementIndex = () => {
       setSelectedMovieIndex((prevIndex) =>
         prevIndex === 4 ? 0 : prevIndex + 1
       );
     };
 
+  useEffect(() => {
     const intervalId = setInterval(incrementIndex, 15000);
 
     return () => {
       // Clean up the interval when the component unmounts
       clearInterval(intervalId);
     };
-  }, []);
+  }, [selectedMovieIndex]);
 
   return (
     <div className="lg:w-full h-[100vh] md:h-[600px] bg-center text-white xl:w-[1440px] xl:mx-auto relative">
@@ -49,7 +47,7 @@ const Hero = () => {
           />
 
           {/* Navbar */}
-          <Navbar display="flex" />
+          <Navbar display="flex" colors={"border-white text-white placeholder:text-white"}/>
 
           {/* Description box */}
           <div className="h-screen-16 md:h-[520px] w-full md:flex md:items-center gap-2 md:w-[1100px] mx-auto px-3 xs:px-5 md:px-0">
@@ -62,14 +60,14 @@ const Hero = () => {
 
             <div className="hidden md:flex">
               <Pagination
-                count={count}
+                count={5}
                 selectedMovieIndex={selectedMovieIndex}
                 setSelectedMovieIndex={setSelectedMovieIndex}
               />
             </div>
             <div className='w-full relative flex md:hidden'>
               <div className='bottom-10 flex md:hidden justify-center absolute w-full'>
-                <Dots count={count} selectedMovieIndex={selectedMovieIndex} setSelectedMovieIndex={setSelectedMovieIndex} />
+                <Dots count={5} selectedMovieIndex={selectedMovieIndex} setSelectedMovieIndex={setSelectedMovieIndex} />
               </div>
             </div>
           </div>

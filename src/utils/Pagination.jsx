@@ -12,11 +12,11 @@ const Pagination = ({ count, selectedMovieIndex, setSelectedMovieIndex }) => {
    */
   const margin = (selectedMovieIndex) => {
     if (selectedMovieIndex === 0) {
-      return "pt-[112px]" || "pt-[113px]";
+      return "pt-[112px]";
     } else if (selectedMovieIndex === 1) {
       return "pt-[55px]";
     } else if (selectedMovieIndex === 2) {
-      return "pt-[1px] || pt-[0px]";
+      return " pt-[0px]";
     } else if (selectedMovieIndex === 3) {
       return "pb-[112px]";
     } else if (selectedMovieIndex === 4) {
@@ -28,7 +28,7 @@ const Pagination = ({ count, selectedMovieIndex, setSelectedMovieIndex }) => {
     <div
       className={`${margin(
         selectedMovieIndex
-      )} pt-[55px] flex flex-col gap-[10px] font-[700]`}
+      )} ${selectedMovieIndex > 2 ? 'pt-[55px]' : ''} flex flex-col gap-[10px] font-[700]`}
     >
       {numbers.map((number, index) => (
         <button
@@ -39,7 +39,7 @@ const Pagination = ({ count, selectedMovieIndex, setSelectedMovieIndex }) => {
           className={`${selectedMovieIndex === index
               ? "text-white text-[16px]"
               : "text-gray-500 text-[12px]"
-            }`}
+            } outline-none`}
         >
           {number}
         </button>

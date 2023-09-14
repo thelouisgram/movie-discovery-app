@@ -7,10 +7,8 @@ import { useDispatch } from "react-redux";
 
 /**
  * Navbar component for displaying a navigation bar.
- * @param {string} display - CSS display property value for controlling visibility.
- * @returns {JSX.Element} The rendered Navbar component.
  */
-const Navbar = ({ display }) => {
+const Navbar = ({ display, colors }) => {
   const dispatch = useDispatch();
 
   /**
@@ -28,7 +26,7 @@ const Navbar = ({ display }) => {
       <Logo />
       <div className="w-auto h-auto hidden ss:flex">
         {/* Renders the SearchBar component */}
-        <SearchBar colors={"border-white text-white placeholder:text-white"} />
+        <SearchBar colors={colors} />
       </div>
       <div className="flex gap-[18px] md:gap-[27px] items-center">
         <h3 className="font-[700] text-[16px] leading-[24px] hidden md:flex">

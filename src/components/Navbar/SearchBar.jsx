@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSearchedMovie } from "../../store/stateSlice";
+import { setSearchedMovie, setNav } from "../../store/stateSlice";
 import { useNavigate } from "react-router-dom";
 
 /**
@@ -29,6 +29,7 @@ const SearchBar = ({ colors }) => {
       dispatch(setSearchedMovie(movie));
       navigate(`/searched-movie/${movie}`);
       setMovie("");
+      dispatch(setNav(false))
     }
   };
 

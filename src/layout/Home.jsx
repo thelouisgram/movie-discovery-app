@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reset } from '../store/stateSlice';
@@ -22,7 +23,7 @@ const Home = () => {
     // After both actions are complete, you can dispatch other actions
     dispatch(reset());
     dispatch(setNav(false));
-  }, [dispatch])
+  }, [])
 
  
 

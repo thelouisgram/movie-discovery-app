@@ -33,6 +33,7 @@ const MovieCard = ({ movie }) => {
         ss:h-[30px] rounded-full flex items-center justify-center`}
       >
         <img
+          loading="lazy"
           src="/images/Heart.svg"
           alt="Favorite"
           className="z-[9] w-[16px] h-[16px] ss:w-auto ss:h-auto"
