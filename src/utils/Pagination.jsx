@@ -12,11 +12,11 @@ const Pagination = ({ count, selectedMovieIndex, setSelectedMovieIndex }) => {
    */
   const margin = (selectedMovieIndex) => {
     if (selectedMovieIndex === 0) {
-      return "pt-[113px]";
+      return "pt-[112px]" || "pt-[113px]";
     } else if (selectedMovieIndex === 1) {
       return "pt-[55px]";
     } else if (selectedMovieIndex === 2) {
-      return "pt-[1px]";
+      return "pt-[1px] || pt-[0px]";
     } else if (selectedMovieIndex === 3) {
       return "pb-[112px]";
     } else if (selectedMovieIndex === 4) {

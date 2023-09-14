@@ -49,7 +49,7 @@ const Result = () => {
         ) : error ? (
           <p>Error occurred: {error.status.message}</p>
         ) : success ? (
-          <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-[10px] gap-y-[18px] xs:gap-[18px] md:gap-[80px] flex-wrap">
+          <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-[12px] gap-y-[18px] xs:gap-[18px] md:gap-[80px] flex-wrap">
             {searchedMovies.map((movie, index) => (
               <MovieCard key={index} movie={movie} />
             ))}
