@@ -13,9 +13,11 @@ import { showTrendingMovies } from '../../../store/stateAction';
  */
 const Hero = () => {
   const [selectedMovieIndex, setSelectedMovieIndex] = useState(0);
-  const { trendLoading, trendSuccess, trendError, trendingMovies } = useSelector(
+  const { trendingMovies } = useSelector(
     (state) => state.app
   );
+
+  const { success, loading, error, data, message } = trendingMovies
 
   // Function to increment selectedMovieIndex
     const incrementIndex = () => {
@@ -35,14 +37,14 @@ const Hero = () => {
 
   return (
     <div className="lg:w-full h-[100vh] md:h-[600px] bg-center text-white xl:w-[1440px] xl:mx-auto relative">
-      {trendLoading ? (
+      {loading ? (
         <Loader />
-      ) : trendError ? (
-        <Error action = {showTrendingMovies}/>
-      ) : trendSuccess ? (
+      ) : error ? (
+        <Error action = {showTrendingMovies} message={message}/>
+        ) : success ? (
         <>
           <img
-            src={`https://image.tmdb.org/t/p/original/${trendingMovies[selectedMovieIndex].backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/original/${data[selectedMovieIndex].backdrop_path}`}
             alt="Backdrop Poster"
             className={`w-full h-full object-cover filter brightness-75 absolute z-[-10] transition ease-in-out`}
           />
@@ -54,7 +56,7 @@ const Hero = () => {
               <div className="h-screen-16 md:h-[520px] w-full md:flex md:items-center gap-2 md:w-[1100px] mx-auto px-3 xs:px-5 md:px-0 transition ease-in-out">
             <div className="w-full h-full flex justify-between items-center">
               <section className="w-full flex flex-col justify-center items-center md:items-start">
-                <DescriptionBox poster={trendingMovies[selectedMovieIndex]} />
+                <DescriptionBox poster={data[selectedMovieIndex]} />
               </section>
               <div className="w-5 h-1 bg-white rounded-full hidden md:flex" />
             </div>

@@ -1,103 +1,64 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  showTopMovies,
-  showSearchedMovies,
-  showMovieDetails,
-  showTrendingMovies,
-} from './stateAction'
+import { showTopMovies, showSearchedMovies, showMovieDetails, showTrendingMovies } from "./stateAction";
 
-// Define a Redux slice for the app state
+// Define actionArray with action creators and corresponding data names
+const actionArray = [
+  { action: showTopMovies, data: "topMovies" },
+  { action: showSearchedMovies, data: "searchedMovies" },
+  { action: showMovieDetails, data: "movieDetails" },
+  { action: showTrendingMovies, data: "trendingMovies" },
+  // Add other action objects as needed
+];
+
+// Define initial state based on actionArray
+const initialState = {};
+actionArray.forEach(({ data }) => {
+  initialState[data] = {
+    loading: false,
+    success: false,
+    message: "",
+    error: false,
+    data: [],
+  };
+});
+
 const stateSlice = createSlice({
   name: "app",
   initialState: {
-    loading: false,         // Indicates if data is currently being fetched
-    success: false,         // Indicates if the last action was successful
-    message: '',            // Stores error or informational messages
-    error: false,           // Indicates if an error occurred
-    searchedMovie: '',      // Stores the searched movie query
-    topMovies: [],          // Stores the top-rated movies
-    searchedMovies: [],     // Stores the results of the movie search
-    movieDetails: [],       // Stores details of a specific movie
-    trendingMovies: [],     // Stores trending movies
-    nav: false,             // Indicates whether the mobile navigation is open
-    trendLoading: false,
-    trendError: false,
-    trendSuccess: false,
-    trendMessage: '',
+    ...initialState, // Spread the properties of initialState directly
+    },
+ reducers: {
+  reset: (state) => {
+    Object.keys(initialState).forEach((actionName) => {
+      state[actionName].loading = false;
+      state[actionName].success = false;
+      state[actionName].message = "";
+      state[actionName].error = false;
+      state[actionName].data = [];
+    });
   },
-  reducers: {
-    reset: (state) => {
-      state.searchedMovie = '';
-      state.searchedMovies = [];
-      state.movieDetails = [];
-    },
-    setSearchedMovie: (state, action) => {
-      state.searchedMovie = action.payload;
-    },
-    setNav: (state, action) => {
-      state.nav = action.payload;
-    },
-  },
+},
   extraReducers: (builder) => {
-    builder
-      .addCase(showTopMovies.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(showTopMovies.fulfilled, (state, action) => {
-        state.loading = false;
-        state.topMovies = action.payload;
-        state.success = true;
-      })
-      .addCase(showTopMovies.rejected, (state, action) => {
-        state.loading = false;
-        state.error = true;
-        state.message = action.payload;
-        state.topMovies = [];
-      })
-      .addCase(showSearchedMovies.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(showSearchedMovies.fulfilled, (state, action) => {
-        state.loading = false;
-        state.searchedMovies = action.payload;
-        state.success = true;
-      })
-      .addCase(showSearchedMovies.rejected, (state, action) => {
-        state.loading = false;
-        state.error = true;
-        state.message = action.payload;
-        state.searchedMovies = [];
-      })
-      .addCase(showMovieDetails.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(showMovieDetails.fulfilled, (state, action) => {
-        state.loading = false;
-        state.movieDetails = action.payload;
-        state.success = true;
-      })
-      .addCase(showMovieDetails.rejected, (state, action) => {
-        state.loading = false;
-        state.error = true;
-        state.message = action.payload;
-        state.movieDetails = [];
-      })
-      .addCase(showTrendingMovies.pending, (state) => {
-        state.trendLoading = true;
-      })
-      .addCase(showTrendingMovies.fulfilled, (state, action) => {
-        state.trendLoading = false;
-        state.trendingMovies = action.payload;
-        state.trendSuccess = true;
-      })
-      .addCase(showTrendingMovies.rejected, (state, action) => {
-        state.trendLoading = false;
-        state.trendError = true;
-        state.trendMessage = action.payload;
-        state.trendingMovies = [];
-      });
+    actionArray.forEach(({ action, data }) => {
+      builder
+        .addCase(action.pending, (state) => {
+          state[data].loading = true;
+        })
+        .addCase(action.fulfilled, (state, action) => {
+          state[data].loading = false;
+          state[data].data = action.payload;
+          state[data].success = true;
+        })
+        .addCase(action.rejected, (state, action) => {
+          state[data].loading = false;
+          state[data].error = true;
+          state[data].message = action.payload;
+        });
+    });
   },
 });
 
+console.log(initialState.trendingMovies)
+
 export default stateSlice.reducer;
-export const { reset, setSearchedMovie, setNav } = stateSlice.actions;
+export const { reset, setSearchedMovie } = stateSlice.actions;

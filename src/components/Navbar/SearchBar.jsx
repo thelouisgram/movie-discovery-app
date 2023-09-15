@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSearchedMovie, setNav } from "../../store/stateSlice";
+import { setNav } from "../../store/appSlice";
 import { useNavigate } from "react-router-dom";
+import { setSearchedMovie } from "../../store/appSlice";
 
 /**
  * SearchBar component for searching movies.

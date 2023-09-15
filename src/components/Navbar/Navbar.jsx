@@ -2,7 +2,7 @@
 
 import Logo from "../Shared/Logo";
 import SearchBar from "./SearchBar";
-import { setNav } from "../../store/stateSlice";
+import { setNav } from "../../store/appSlice";
 import { useDispatch } from "react-redux";
 
 /**

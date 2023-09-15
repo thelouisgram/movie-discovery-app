@@ -5,10 +5,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+  -webkit-tap-highlight-color: transparent;
+}
+
 .hero{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+:root{
+  -webkit-tap-highlight-color: transparent;
 }
 
 .lds-ring {

@@ -6,9 +6,6 @@ import { links } from "../../../utils";
  * Links component for displaying a list of navigation links.
  */
 const Links = ({ page }) => {
-    if (!page) {
-        page = 0;
-    }
 
     return (
         <div className="font-[600] text-[#333] mt-16 mb-4 w-full">

@@ -8,12 +8,12 @@ import { useSelector } from 'react-redux';
  */
 const SharedLayout = () => {
   const { nav } = useSelector(
-    (state) => state.app
+    (state) => state.display
   );
 
   return (
     <div className='font-Sans'>
-      <div className=''>
+      <div className='relative'>
         {nav && <MobileNavbar />}
         <Outlet />
       </div>

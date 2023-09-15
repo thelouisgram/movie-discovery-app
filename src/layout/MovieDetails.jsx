@@ -10,9 +10,11 @@ import Error from "./Error";
 
 const MovieDetails = () => {
   // Retrieve data from Redux store using useSelector
-  const { success, loading, error, movieDetails } = useSelector(
+  const { movieDetails } = useSelector(
     (state) => state.app
   );
+
+  const { success, loading, error, data, message } = movieDetails
 
   // Retrieve the "id" parameter from the URL using useParams
   const { id } = useParams();
@@ -52,11 +54,11 @@ const MovieDetails = () => {
         <Loader />
       ) : error ? (
         // Display an error message if an error occurred
-          <Error action={showMovieDetails}/>
+          <Error action={showMovieDetails} message={message}/>
       ) : success ? (
         // Display movie details using the Details component when data is successfully fetched
         <div className="h-full px-3 xs:px-5 md:px-0">
-          <Details movie={movieDetails} />
+          <Details movie={data} />
         </div>
       ) : null}
     </div>

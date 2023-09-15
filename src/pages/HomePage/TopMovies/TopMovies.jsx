@@ -5,9 +5,11 @@ import Error from "../../../components/Shared/Error";
 import { showTopMovies } from "../../../store/stateAction";
 
 const TopMovies = () => {
-  const { success, loading, error, topMovies } = useSelector(
+  const { topMovies } = useSelector(
     (state) => state.app
   );
+
+  const { success, loading, error, data } = topMovies
 
   return (
     <section className="md:w-[1100px] mx-auto py-16 px-3 xs:px-5 md:px-0">
@@ -32,7 +34,7 @@ const TopMovies = () => {
         <Error action={showTopMovies} />
       ) : success ? (
         <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-[12px] gap-y-[18px] xs:gap-[18px] md:gap-[80px] flex-wrap">
-          {topMovies.map((movie, index) => (
+          {data.map((movie, index) => (
             <MovieCard key={index} movie={movie} />
           ))}
         </div>
