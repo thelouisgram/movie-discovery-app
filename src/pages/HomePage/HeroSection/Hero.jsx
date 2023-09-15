@@ -25,7 +25,7 @@ const Hero = () => {
     };
 
   useEffect(() => {
-    const intervalId = setInterval(incrementIndex, 15000);
+    const intervalId = setInterval(incrementIndex, 8000);
 
     return () => {
       // Clean up the interval when the component unmounts
