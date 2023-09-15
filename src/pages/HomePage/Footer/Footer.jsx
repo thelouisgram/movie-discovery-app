@@ -16,7 +16,7 @@ const Footer = () => {
         <h3 className="text-[12px] md:text-[18px] font-[700]">Press Room</h3>
       </div>
 
-      <h3 className="text-[18px] font-[700] text-gray-500">© 2021 MovieBox by Thelouisgram</h3>
+      <h3 className="text-[18px] font-[700] text-gray-500">© 2023 MovieBox by Thelouisgram</h3>
     </div>
   );
 };
