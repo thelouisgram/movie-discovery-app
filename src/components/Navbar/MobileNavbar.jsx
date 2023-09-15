@@ -3,6 +3,8 @@ import Logo from "../Shared/Logo";
 import SearchBar from "./SearchBar";
 import { setNav } from "../../store/appSlice";
 import { useDispatch } from "react-redux";
+import { useRef, useEffect } from "react";
+
 /**
  * MobileNavbar component for displaying a mobile navigation bar.
  * This component includes a logo, a close button, a search bar, and links.
@@ -10,6 +12,7 @@ import { useDispatch } from "react-redux";
  */
 const MobileNavbar = () => {
   const dispatch = useDispatch();
+  const navRef = useRef(null);
 
   /**
    * Handles the click event for closing the mobile navigation bar.
@@ -18,9 +21,24 @@ const MobileNavbar = () => {
     dispatch(setNav(false));
   };
 
+  const handleClickOutside = (event) => {
+    if (navRef.current && !navRef.current.contains(event.target)) {
+      dispatch(setNav(false));
+    }
+  };
+  useEffect(() => {
+    // add event listener for clicks outside of dropdown
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // remove event listener when component unmounts
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="w-full relative h-full">
-      <div className='relative w-full md:w-[1100px] mx-auto'>
+      <div
+        ref={navRef} className='relative w-full md:w-[1100px] mx-auto'>
         <div className="h-[100vh] bg-white w-full absolute md:w-[575px] md:h-auto ss:right-0 py-6 z-[100] flex flex-col items-center gap-[24px]">
           <div className="flex justify-between items-center w-full px-3 xs:px-5 pb-6">
             <Logo />

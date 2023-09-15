@@ -6,13 +6,14 @@ import Result from "./layout/Result";
 import SharedLayout from "./components/SharedLayout";
 import { useDispatch } from "react-redux";
 import { showTrendingMovies, showTopMovies } from "./store/stateAction";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Main application component responsible for defining routing.
  * */
 function App() {
   const dispatch = useDispatch();
+  const [selectedMovieIndex, setSelectedMovieIndex] = useState(0)
 
   useEffect(() => {
     async function fetchData() {
@@ -38,7 +39,7 @@ function App() {
           {/* SharedLayout component is rendered for all routes */}
           <Route path="/" element={<SharedLayout />}>
             {/* Home component is rendered for the root path */}
-            <Route index element={<Home />} />
+            <Route index element={<Home selectedMovieIndex={selectedMovieIndex} setSelectedMovieIndex={setSelectedMovieIndex} />} />
 
             {/* Result component is rendered for searched movies */}
             <Route path="/searched-movie/:searchedMovie" element={<Result />} />

@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+import { useEffect } from 'react';
 import Navbar from '../../../components/Navbar/Navbar';
 import DescriptionBox from './DescriptionBox';
 import { useSelector } from 'react-redux';
@@ -7,12 +9,12 @@ import Error from '../../../components/Shared/Error';
 import Pagination from '../../../utils/Pagination';
 import Dots from '../../../components/Shared/Dots';
 import { showTrendingMovies } from '../../../store/stateAction';
+import { handleSwipe } from '../../../utils/handleSwipe';
 
 /**
  * The Hero component displays a hero section with trending movies.
  */
-const Hero = () => {
-  const [selectedMovieIndex, setSelectedMovieIndex] = useState(0);
+const Hero = ({ selectedMovieIndex, setSelectedMovieIndex }) => {
   const { trendingMovies } = useSelector(
     (state) => state.app
   );
@@ -20,11 +22,11 @@ const Hero = () => {
   const { success, loading, error, data, message } = trendingMovies
 
   // Function to increment selectedMovieIndex
-    const incrementIndex = () => {
-      setSelectedMovieIndex((prevIndex) =>
-        prevIndex === 4 ? 0 : prevIndex + 1
-      );
-    };
+  const incrementIndex = () => {
+    setSelectedMovieIndex((prevIndex) =>
+      prevIndex === 4 ? 0 : prevIndex + 1
+    );
+  };
 
   useEffect(() => {
     const intervalId = setInterval(incrementIndex, 8000);
@@ -35,13 +37,44 @@ const Hero = () => {
     };
   }, [selectedMovieIndex]);
 
+  const handleTouchStart = (e) => {
+    const startX = e.touches[0].clientX;
+    let direction;
+
+    const handleTouchMove = (e) => {
+      const currentX = e.touches[0].clientX;
+      const diff = startX - currentX;
+
+      if (diff > 30) {
+        direction = 'left';
+      } else if (diff < -30) {
+        direction = 'right';
+      }
+    };
+
+    const handleTouchEnd = () => {
+      if (direction) {
+        handleSwipe(direction, selectedMovieIndex, setSelectedMovieIndex);
+      }
+
+      // Remove event listeners
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+
+    // Add event listeners for touchmove and touchend
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+  };
+
+
   return (
-    <div className="lg:w-full h-[100vh] md:h-[600px] bg-center text-white xl:w-[1440px] xl:mx-auto relative">
+    <div className="lg:w-full h-[100vh] sm:h-[800px] md:h-[600px] bg-center text-white xl:w-[1440px] xl:mx-auto relative">
       {loading ? (
         <Loader />
       ) : error ? (
-        <Error action = {showTrendingMovies} message={message}/>
-        ) : success ? (
+        <Error action={showTrendingMovies} message={message} />
+      ) : success ? (
         <>
           <img
             src={`https://image.tmdb.org/t/p/original/${data[selectedMovieIndex].backdrop_path}`}
@@ -50,10 +83,10 @@ const Hero = () => {
           />
 
           {/* Navbar */}
-          <Navbar display="flex" colors={"border-white text-white placeholder:text-white"}/>
+          <Navbar display="flex" colors={"border-white text-white placeholder:text-white"} />
 
           {/* Description box */}
-              <div className="h-screen-16 md:h-[520px] w-full md:flex md:items-center gap-2 md:w-[1100px] mx-auto px-3 xs:px-5 md:px-0 transition ease-in-out">
+          <div className="h-screen-16 sm:h-[720px] md:h-[520px] w-full md:flex md:items-center gap-2 md:w-[1100px] mx-auto px-3 xs:px-5 md:px-0 transition ease-in-out">
             <div className="w-full h-full flex justify-between items-center">
               <section className="w-full flex flex-col justify-center items-center md:items-start">
                 <DescriptionBox poster={data[selectedMovieIndex]} />

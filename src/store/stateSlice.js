@@ -27,17 +27,6 @@ const stateSlice = createSlice({
   initialState: {
     ...initialState, // Spread the properties of initialState directly
     },
- reducers: {
-  reset: (state) => {
-    Object.keys(initialState).forEach((actionName) => {
-      state[actionName].loading = false;
-      state[actionName].success = false;
-      state[actionName].message = "";
-      state[actionName].error = false;
-      state[actionName].data = [];
-    });
-  },
-},
   extraReducers: (builder) => {
     actionArray.forEach(({ action, data }) => {
       builder
@@ -58,7 +47,5 @@ const stateSlice = createSlice({
   },
 });
 
-console.log(initialState.trendingMovies)
-
 export default stateSlice.reducer;
-export const { reset, setSearchedMovie } = stateSlice.actions;
+export const { setSearchedMovie } = stateSlice.actions;
