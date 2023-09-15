@@ -13,7 +13,7 @@ const DescriptionBox = ({ poster }) => {
       <Rating poster={poster} />
       {/* Description */}
       <MovieDescription poster={poster} />
-      <WatchTrailer />
+      <WatchTrailer movie={poster}/>
     </div>
   );
 };

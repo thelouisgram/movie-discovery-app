@@ -38,7 +38,7 @@ const Pagination = ({ count, selectedMovieIndex, setSelectedMovieIndex }) => {
           }}
           className={`${selectedMovieIndex === index
               ? "text-white text-[16px]"
-              : "text-gray-500 text-[12px]"
+              : "text-gray-500 text-[12px] hover:text-white"
             } outline-none`}
         >
           {number}

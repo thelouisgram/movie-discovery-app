@@ -39,6 +39,7 @@ const Result = () => {
         {!loading && (
           <div className="flex w-full justify-start center mb-4 xs:mb-8">
             <h2 className="font-[700] text-[18px] md:text-[36px]">
+              Search results for 
               <span className="italic">'{searchedMovie}'</span> (
               {searchedMovies.length})
             </h2>

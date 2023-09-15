@@ -44,14 +44,14 @@ const Hero = () => {
           <img
             src={`https://image.tmdb.org/t/p/original/${trendingMovies[selectedMovieIndex].backdrop_path}`}
             alt="Backdrop Poster"
-            className={`w-full h-full object-cover filter brightness-75 absolute z-[-10]`}
+            className={`w-full h-full object-cover filter brightness-75 absolute z-[-10] transition ease-in-out`}
           />
 
           {/* Navbar */}
           <Navbar display="flex" colors={"border-white text-white placeholder:text-white"}/>
 
           {/* Description box */}
-          <div className="h-screen-16 md:h-[520px] w-full md:flex md:items-center gap-2 md:w-[1100px] mx-auto px-3 xs:px-5 md:px-0">
+              <div className="h-screen-16 md:h-[520px] w-full md:flex md:items-center gap-2 md:w-[1100px] mx-auto px-3 xs:px-5 md:px-0 transition ease-in-out">
             <div className="w-full h-full flex justify-between items-center">
               <section className="w-full flex flex-col justify-center items-center md:items-start">
                 <DescriptionBox poster={trendingMovies[selectedMovieIndex]} />
@@ -67,7 +67,7 @@ const Hero = () => {
               />
             </div>
             <div className='w-full relative flex md:hidden'>
-              <div className='bottom-10 flex md:hidden justify-center absolute w-full'>
+              <div className='bottom-16 flex md:hidden justify-center absolute w-full'>
                 <Dots count={5} selectedMovieIndex={selectedMovieIndex} setSelectedMovieIndex={setSelectedMovieIndex} />
               </div>
             </div>
