@@ -9,7 +9,6 @@ import Error from '../../../components/Shared/Error';
 import Pagination from '../../../utils/Pagination';
 import Dots from '../../../components/Shared/Dots';
 import { showTrendingMovies } from '../../../store/stateAction';
-import { handleSwipe } from '../../../utils/handleSwipe';
 
 /**
  * The Hero component displays a hero section with trending movies.
@@ -36,37 +35,6 @@ const Hero = ({ selectedMovieIndex, setSelectedMovieIndex }) => {
       clearInterval(intervalId);
     };
   }, [selectedMovieIndex]);
-
-  const handleTouchStart = (e) => {
-    const startX = e.touches[0].clientX;
-    let direction;
-
-    const handleTouchMove = (e) => {
-      const currentX = e.touches[0].clientX;
-      const diff = startX - currentX;
-
-      if (diff > 30) {
-        direction = 'left';
-      } else if (diff < -30) {
-        direction = 'right';
-      }
-    };
-
-    const handleTouchEnd = () => {
-      if (direction) {
-        handleSwipe(direction, selectedMovieIndex, setSelectedMovieIndex);
-      }
-
-      // Remove event listeners
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
-    };
-
-    // Add event listeners for touchmove and touchend
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
-  };
-
 
   return (
     <div className="lg:w-full h-[100vh] sm:h-[800px] md:h-[600px] bg-center text-white xl:w-[1440px] xl:mx-auto relative">
