@@ -52,7 +52,7 @@ const MovieDetails = () => {
         <Loader />
       ) : error ? (
         // Display an error message if an error occurred
-        <Error />
+          <Error action={showMovieDetails}/>
       ) : success ? (
         // Display movie details using the Details component when data is successfully fetched
         <div className="h-full px-3 xs:px-5 md:px-0">
