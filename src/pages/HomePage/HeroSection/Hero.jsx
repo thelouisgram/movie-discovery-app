@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../../../components/Navbar/Navbar';
 import DescriptionBox from './DescriptionBox';
 import { useSelector } from 'react-redux';
@@ -10,34 +10,72 @@ import Pagination from '../../../utils/Pagination';
 import Dots from '../../../components/Shared/Dots';
 import { showTrendingMovies } from '../../../store/stateAction';
 
-/**
- * The Hero component displays a hero section with trending movies.
- */
 const Hero = ({ selectedMovieIndex, setSelectedMovieIndex }) => {
-  const { trendingMovies } = useSelector(
-    (state) => state.app
-  );
+  const { trendingMovies } = useSelector((state) => state.app);
 
-  const { success, loading, error, data, message } = trendingMovies
+  const { success, loading, error, data, message } = trendingMovies;
 
-  // Function to increment selectedMovieIndex
   const incrementIndex = () => {
     setSelectedMovieIndex((prevIndex) =>
       prevIndex === 4 ? 0 : prevIndex + 1
     );
   };
 
+  const decrementIndex = () => {
+    setSelectedMovieIndex((prevIndex) =>
+      prevIndex === 0 ? 4 : prevIndex - 1
+    );
+  };
+
+  // Initialize swipeStartX in component state
+  const [swipeStartX, setSwipeStartX] = useState(null);
+
+  const handleSwipeStart = (event) => {
+    setSwipeStartX(event.clientX || event.touches[0].clientX);
+  };
+
+  const handleSwipeEnd = (event) => {
+    if (swipeStartX === null) {
+      return; // Return early if swipeStartX is null
+    }
+
+    const endX = event.clientX || event.changedTouches[0].clientX;
+    setSwipeStartX(null); // Reset swipeStartX after using it
+
+    const swipeDistance = swipeStartX - endX;
+    const swipeThreshold = 50; // Adjust this value as needed
+
+    if (swipeDistance > swipeThreshold) {
+      incrementIndex(); // Swipe right
+    } else if (swipeDistance < -swipeThreshold) {
+      decrementIndex(); // Swipe left
+    }
+  };
+
   useEffect(() => {
-    const intervalId = setInterval(incrementIndex, 8000);
+    let intervalId;
+
+    const startInterval = () => {
+      clearInterval(intervalId); // Clear any existing interval
+      intervalId = setInterval(incrementIndex, 8000); // Start a new interval
+    };
+
+    startInterval(); // Initial start
 
     return () => {
-      // Clean up the interval when the component unmounts
       clearInterval(intervalId);
     };
   }, [selectedMovieIndex]);
 
+
   return (
-    <div className="lg:w-full h-[100vh] sm:h-[800px] md:h-[600px] bg-center text-white xl:w-[1440px] xl:mx-auto relative">
+    <div
+      onTouchStart={handleSwipeStart}
+      onTouchEnd={handleSwipeEnd}
+      onMouseDown={handleSwipeStart}
+      onMouseUp={handleSwipeEnd}
+      className="lg:w-full h-[100vh] sm:h-[800px] md:h-[600px] bg-center text-white xl:w-[1440px] xl:mx-auto relative"
+    >
       {loading ? (
         <Loader />
       ) : error ? (
@@ -50,10 +88,11 @@ const Hero = ({ selectedMovieIndex, setSelectedMovieIndex }) => {
             className={`w-full h-full object-cover filter brightness-75 absolute z-[-10] transition ease-in-out`}
           />
 
-          {/* Navbar */}
-          <Navbar display="flex" colors={"border-white text-white placeholder:text-white"} />
+          <Navbar
+            display="flex"
+            colors={"border-white text-white placeholder:text-white"}
+          />
 
-          {/* Description box */}
           <div className="h-screen-16 sm:h-[720px] md:h-[520px] w-full md:flex md:items-center gap-2 md:w-[1100px] mx-auto px-3 xs:px-5 md:px-0 transition ease-in-out">
             <div className="w-full h-full flex justify-between items-center">
               <section className="w-full flex flex-col justify-center items-center md:items-start">
@@ -69,9 +108,13 @@ const Hero = ({ selectedMovieIndex, setSelectedMovieIndex }) => {
                 setSelectedMovieIndex={setSelectedMovieIndex}
               />
             </div>
-            <div className='w-full relative flex md:hidden'>
-              <div className='bottom-16 flex md:hidden justify-center absolute w-full'>
-                <Dots count={5} selectedMovieIndex={selectedMovieIndex} setSelectedMovieIndex={setSelectedMovieIndex} />
+            <div className="w-full relative flex md:hidden">
+              <div className="bottom-16 flex md:hidden justify-center absolute w-full">
+                <Dots
+                  count={5}
+                  selectedMovieIndex={selectedMovieIndex}
+                  setSelectedMovieIndex={setSelectedMovieIndex}
+                />
               </div>
             </div>
           </div>
