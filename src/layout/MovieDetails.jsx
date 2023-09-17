@@ -43,9 +43,9 @@ const MovieDetails = () => {
       {/* Sidebar Component */}
       <div>
         <Sidebar radius={radius} />
-        <div className="border-b-[1px] md:border-none border-gray-300">
+        {success && <div className="border-b-[1px] md:border-none border-gray-300">
           <Navbar display="flex md:hidden" />
-        </div>
+        </div>}
       </div>
 
       {/* Conditional rendering based on loading, error, or success */}
