@@ -10,6 +10,7 @@ import Hero from '../pages/HomePage/HeroSection/Hero';
 import TopMovies from '../pages/HomePage/TopMovies/TopMovies';
 import Footer from '../pages/HomePage/Footer/Footer';
 import { showTrendingMovies } from '../store/stateAction';
+import { AnimatePresence, motion } from "framer-motion";
 
 /**
  * The Home component represents the home page of the application.
@@ -38,16 +39,21 @@ const Home = ({ selectedMovieIndex, setSelectedMovieIndex }) => {
           <Error action={showTrendingMovies} message={message} />
         </div>
       ) : success ? (
-        <div>
-          {/* Hero section */}
-          <Hero selectedMovieIndex={selectedMovieIndex} setSelectedMovieIndex={setSelectedMovieIndex} />
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ ease: "easeInOut", duration: 1.5 }}>
+            {/* Hero section */}
+            <Hero selectedMovieIndex={selectedMovieIndex} setSelectedMovieIndex={setSelectedMovieIndex} />
 
-          {/* Top Movies */}
-          <TopMovies />
+            {/* Top Movies */}
+            <TopMovies />
 
-          {/* Footer */}
-          <Footer />
-        </div>
+            {/* Footer */}
+            <Footer />
+          </motion.div>
+        </AnimatePresence>
       ) : null}
     </>
   );

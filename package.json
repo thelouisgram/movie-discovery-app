@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.5.0",
+    "framer-motion": "^10.16.4",
     "hash-router": "^0.4.0",
     "random": "^4.1.0",
     "react": "^18.2.0",
