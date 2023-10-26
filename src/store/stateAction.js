@@ -18,6 +18,19 @@ export const showTopMovies = createAsyncThunk('topMovies', async (_, thunkAPI) =
 });
 
 /**
+ * Thunk to fetch the now-playing movies from TMDb.
+ */
+export const showNowPlaying = createAsyncThunk('nowPlaying', async (_, thunkAPI) => {
+  try {
+    const response = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`);
+    return response.data.results.slice(0, 10);
+  } catch (err) {
+    const message = (err.response && err.response.data) || err.message;
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+/**
  * Thunk to fetch trending movies of the day from TMDb.
  */
 export const showTrendingMovies = createAsyncThunk('trendingMovies', async (_, thunkAPI) => {

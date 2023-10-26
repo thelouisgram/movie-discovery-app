@@ -5,7 +5,7 @@ import MovieDetails from "./layout/MovieDetails";
 import Result from "./layout/Result";
 import SharedLayout from "./components/SharedLayout";
 import { useDispatch } from "react-redux";
-import { showTrendingMovies, showTopMovies } from "./store/stateAction";
+import { showTrendingMovies, showTopMovies, showNowPlaying } from "./store/stateAction";
 import { useEffect, useState } from "react";
 
 /**
@@ -22,6 +22,7 @@ function App() {
         await dispatch(showTrendingMovies());
 
         // Once the first action is complete, dispatch the second action
+        await dispatch(showNowPlaying());
         await dispatch(showTopMovies());
       } catch (error) {
         // Handle any errors that might occur during the dispatch

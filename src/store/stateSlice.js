@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { showTopMovies, showSearchedMovies, showMovieDetails, showTrendingMovies } from "./stateAction";
+import { showTopMovies, showSearchedMovies, showMovieDetails, showTrendingMovies, showNowPlaying } from "./stateAction";
 
 // Define actionArray with action creators and corresponding data names
 export const actionArray = [
@@ -7,6 +7,7 @@ export const actionArray = [
   { action: showSearchedMovies, data: "searchedMovies" },
   { action: showMovieDetails, data: "movieDetails" },
   { action: showTrendingMovies, data: "trendingMovies" },
+  { action: showNowPlaying, data: "nowPlaying" },
   // Add other action objects as needed
 ];
 

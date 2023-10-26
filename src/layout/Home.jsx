@@ -11,6 +11,7 @@ import TopMovies from '../pages/HomePage/TopMovies/TopMovies';
 import Footer from '../pages/HomePage/Footer/Footer';
 import { showTrendingMovies } from '../store/stateAction';
 import { AnimatePresence, motion } from "framer-motion";
+import NowPlaying from '../pages/HomePage/NowPlaying/NowPlaying';
 
 /**
  * The Home component represents the home page of the application.
@@ -46,7 +47,8 @@ const Home = ({ selectedMovieIndex, setSelectedMovieIndex }) => {
             transition={{ ease: "easeInOut", duration: 2 }}>
             {/* Hero section */}
             <Hero selectedMovieIndex={selectedMovieIndex} setSelectedMovieIndex={setSelectedMovieIndex} />
-
+            {/* Latest Movies */}
+            <NowPlaying />
             {/* Top Movies */}
             <TopMovies />
 
